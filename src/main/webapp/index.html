@@ -301,11 +301,11 @@
 		var t0 = new Date();
 
 		// Changes paths for local development environment
-		if (urlParams['dev'] == '1')
+		if (true || urlParams['dev'] == '1')
 		{
 			// Used to request grapheditor/mxgraph sources in dev mode
-			var mxDevUrl = document.location.protocol + '//devhost.jgraph.com/mxgraph2';
-			
+			var mxDevUrl = document.location.protocol + '//' + document.location.host;
+
 			if (document.location.protocol == 'file:')
 			{
 				mxDevUrl = '../../mxgraph2';
@@ -314,10 +314,10 @@
 				mxForceIncludes = true;
 			}
 
-			var geBasePath = mxDevUrl + '/javascript/examples/grapheditor/www/js';
-			var mxBasePath = mxDevUrl + '/javascript/src';
-			
-			// Used to request draw.io sources in dev mode
+            var geBasePath = mxDevUrl + '/js/mxgraph';
+			var mxBasePath = mxDevUrl + '/mxgraph';
+
+            // Used to request draw.io sources in dev mode
 			var drawDevUrl = '';
 
 			if (urlParams['drawdev'] == '1')
@@ -327,7 +327,7 @@
 			
 			mxscript(drawDevUrl + 'js/diagramly/Init.js');
 			mxscript(geBasePath + '/Init.js');
-			mxscript(mxDevUrl + '/javascript/src/js/mxClient.js');
+			mxscript(mxDevUrl + '/js/mxgraph/mxClient.js');
 			
 			// Adds all JS code that depends on mxClient. This indirection via Devel.js is
 			// required in some browsers to make sure mxClient.js (and the files that it
